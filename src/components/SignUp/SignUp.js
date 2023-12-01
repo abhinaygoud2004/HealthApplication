@@ -1,34 +1,42 @@
-import React from 'react';
-import './SignUp.css';
-import axios from 'axios';
-import { useState } from 'react'
-import { useForm } from 'react-hook-form';
+import React from "react";
+import "./SignUp.css";
+import axios from "axios";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const SignUp = () => {
-    
-    const { v4: uuidv4 } = require('uuid');
-    let {register,handleSubmit,formState:{errors}}=useForm()
-    //HTTP req error state
-    let [err,setErr]=useState("")
+  const { v4: uuidv4 } = require("uuid");
+  let {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  //HTTP req error state
+  let [err, setErr] = useState("");
 
-    function generateUserId() {
-        return uuidv4();
-    }
-    let addUser=async(newUser)=>{
-        const userId = generateUserId(); // Replace this with your logic to get the user ID
-        
-        // Create a modified newUser object with the appended user ID
-        const modifiedUser = {
-            ...newUser,
-            userId: userId, // Append the user ID here
-        };
-        console.log(modifiedUser)
-        const response = await axios.post('http://localhost:4000/user-api/register', modifiedUser,{
+  function generateUserId() {
+    return uuidv4();
+  }
+  let addUser = async (newUser) => {
+    const userId = generateUserId(); // Replace this with your logic to get the user ID
+
+    // Create a modified newUser object with the appended user ID
+    const modifiedUser = {
+      ...newUser,
+      userId: userId, // Append the user ID here
+    };
+    console.log(modifiedUser);
+    const response = await axios.post(
+      "http://localhost:4000/user-api/register",
+      modifiedUser,
+      {
         headers: {
-          'Content-Type': 'application/json', // Set the content type to JSON
-        },});
-    }
-    // let navigate=useNavigate()
+          "Content-Type": "application/json", // Set the content type to JSON
+        },
+      }
+    );
+  };
+  // let navigate=useNavigate()
   return (
     <div className="flex-center">
       <div className="container">
@@ -37,9 +45,15 @@ const SignUp = () => {
           <form onSubmit={handleSubmit(addUser)}>
             <div className="input-group">
               <label htmlFor="name" className="input-label">
-Username              </label>
+                Username{" "}
+              </label>
               <input
-                type="text" name="username" placeholder='hi' id="username" className='input-field mt-3' {...register("username",{required:true})}
+                type="text"
+                name="username"
+                placeholder="hi"
+                id="username"
+                className="input-field mt-3"
+                {...register("username", { required: true })}
               />
             </div>
             <div className="input-group">
@@ -47,7 +61,12 @@ Username              </label>
                 Password
               </label>
               <input
-                type="password" name="password" placeholder='hi' id="password" className='input-field mt-3' {...register("password",{required:true})}
+                type="password"
+                name="password"
+                placeholder="hi"
+                id="password"
+                className="input-field mt-3"
+                {...register("password", { required: true })}
               />
             </div>
 
@@ -56,7 +75,12 @@ Username              </label>
                 Email
               </label>
               <input
-                type="email" placeholder='hi' name="email" id="email" className='input-field mt-3' {...register("email",{required:true})}
+                type="email"
+                placeholder="hi"
+                name="email"
+                id="email"
+                className="input-field mt-3"
+                {...register("email", { required: true })}
               />
             </div>
 
@@ -64,7 +88,8 @@ Username              </label>
               <label htmlFor="sex" className="input-label">
                 Sex
               </label>
-              <select {...register("sex",{required:true})}
+              <select
+                {...register("sex", { required: true })}
                 id="sex"
                 name="sex"
                 className="select-field"
@@ -84,7 +109,7 @@ Username              </label>
                 id="age"
                 name="age"
                 className="input-field"
-                {...register("age",{required:true})}
+                {...register("age", { required: true })}
                 placeholder="hi"
               />
             </div>
@@ -97,7 +122,7 @@ Username              </label>
                 id="height"
                 name="height"
                 className="input-field"
-                {...register("height",{required:true})}
+                {...register("height", { required: true })}
                 placeholder="hi"
               />
             </div>
@@ -111,7 +136,7 @@ Username              </label>
                 id="weight"
                 name="weight"
                 className="input-field"
-                {...register("weight",{required:true})}
+                {...register("weight", { required: true })}
                 placeholder="hi"
               />
             </div>

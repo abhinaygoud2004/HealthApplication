@@ -1,4 +1,4 @@
-.main {
+.main1 {
     width: 80%;
     margin: auto;
     background-color: #3498db;
@@ -7,18 +7,14 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .input-container {
-    margin-bottom: 20px;
-  }
-  
-  input {
+  .input1 {
     width: 70%;
     padding: 10px;
     border: none;
     border-radius: 5px;
   }
   
-  button {
+  .button1 {
     width: 30%;
     padding: 10px;
     border: none;

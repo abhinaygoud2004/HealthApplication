@@ -60,7 +60,7 @@ const NutritionTable = () => {
                     size="xl"
                 />
             </div> :
-      <div className="main flex flex-row mt-5 gap-5 mx-auto">
+      <div className="main1 flex flex-row mt-5 gap-5 mx-auto">
         
         <div>
           <h2 className="text-2xl font-semibold mb-4">{foodData[0].name}</h2>
@@ -100,16 +100,16 @@ const NutritionTable = () => {
 
   return (
     <div className="text-center mt-5">
-      <input
+      <input 
         type="text"
         value={query}
         onChange={handleInputChange}
-        className={`border rounded-md px-4 py-2 mr-2 ${isValidInput ? '' : 'border-red-500'}`}
+        className={`border input1 rounded-md px-4 py-2 mr-2 ${isValidInput ? '' : 'border-red-500'}`}
         placeholder="Enter food item"
       />
       <button
         onClick={fetchData}
-        className="bg-blue-500 text-white px-6 py-2 rounded-md"
+        className="bg-blue-500 button1 text-white px-6 py-2 rounded-md"
       >
         Get Nutrition
       </button>
