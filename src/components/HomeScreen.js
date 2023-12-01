@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Progress } from "@material-tailwind/react";
 import { v4 as uuid } from "uuid";
-import { Button, } from '@chakra-ui/react';
+import { Button, Input, InputGroup, InputLeftAddon, } from '@chakra-ui/react';
 import { Link } from 'react-router-dom'
+import { Select } from '@chakra-ui/react'
 
 const HomeScreen = () => {
     const [showModal, setShowModal] = useState(false)
@@ -20,6 +21,10 @@ const HomeScreen = () => {
     const [mealCalories, setMealCalories] = useState('');
 
     const [workoutName, setWorkoutName] = useState('');
+    const [workoutDuration, setWorkoutDuration] = useState();
+    const [workoutHeartRate, setWorkoutHeartRate] = useState();
+    const [workoutBodyTemp, setWorkoutBodyTemp] = useState();
+
     const [workoutCalories, setWorkoutCalories] = useState('');
 
     const handleFormSubmit1 = (e) => {
@@ -40,9 +45,19 @@ const HomeScreen = () => {
         console.log('Workout Name:', workoutName);
         console.log('Workout Calories:', workoutCalories);
 
-        setAllWorkouts([...allWorkouts, { workoutId: uuid(), workoutName: workoutName, workoutCalories: workoutCalories }])
+        setAllWorkouts([...allWorkouts, {
+            workoutId: uuid(),
+            workoutName: workoutName,
+            workoutCalories: workoutCalories,
+            workoutBodyTemp: workoutBodyTemp,
+            workoutDuration: workoutDuration,
+            workoutHeartRate: workoutHeartRate
+        }])
         setWorkoutName('');
         setWorkoutCalories('');
+        setWorkoutHeartRate();
+        setWorkoutBodyTemp();
+        setWorkoutDuration();
     };
 
     useEffect(() => {
@@ -60,6 +75,42 @@ const HomeScreen = () => {
         })
         setCaloriesBurned(c)
     }, [allWorkouts])
+
+    useEffect(() => {
+        const predictCaloriesBurned = async () => {
+            const apiUrl = 'http://127.0.0.1:5000/predict_calories';
+            const userData = {
+                Gender: 0,
+                Age: 27,
+                Height: 181,
+                Weight: 72,
+                Duration: Number(workoutDuration),
+                Heart_Rate: Number(workoutHeartRate),
+                Body_Temp: Number(workoutBodyTemp),
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to calculate calories');
+                }
+
+                const data = await response.json();
+                setWorkoutCalories(data.calories);
+            } catch (error) {
+                console.error('Error:', error.message);
+            }
+        }
+        if (workoutDuration && workoutBodyTemp && workoutHeartRate)
+            predictCaloriesBurned()
+    }, [workoutBodyTemp, workoutDuration, workoutHeartRate])
 
     return (
         <div>
@@ -316,25 +367,42 @@ const HomeScreen = () => {
                     {workoutCard && <div className="show w-[95%] px-7 mt-5" id="collapse-meal" style={{}}>
                         <div className="card card-body bg-[#f8f9fa] border border-black rounded-md p-4">
                             <form id="meal-form" onSubmit={handleFormSubmit2}>
-                                <div className="mb-3">
-                                    <input
-                                        type="text"
-                                        className="form-control w-[95%] px-4 p-2 rounded-md text-base border border-gray"
-                                        id="workout-name"
-                                        placeholder="Enter Workout"
-                                        value={workoutName}
-                                        onChange={(e) => setWorkoutName(e.target.value)}
-                                    />
+                                <div className="mb-3.5 flex flex-row items-center">
+                                    <div className='w-[49%] mr-3'>
+                                        <InputGroup size={'md'}>
+                                            <InputLeftAddon children='Workout Name' />
+                                            <Input value={workoutName} onChange={(e) => setWorkoutName(e.target.value)} type='text' placeholder='Ex: Running' />
+                                        </InputGroup>
+                                    </div>
+                                    <div className='w-[49%]'>
+                                        <InputGroup size={'md'}>
+                                            <InputLeftAddon children='Duration (mins)' />
+                                            <Input value={workoutDuration} onChange={(e) => setWorkoutDuration(e.target.value)} type='number' placeholder='Ex: 30' />
+                                        </InputGroup>
+                                    </div>
+                                </div>
+                                <div className="mb-3.5 flex flex-row items-center">
+                                    <div className='w-[49%] mr-3'>
+                                        <InputGroup size={'md'}>
+                                            <InputLeftAddon children='Heart Rate' />
+                                            <Input value={workoutHeartRate} onChange={(e) => setWorkoutHeartRate(e.target.value)} type='number' placeholder='Ex: 80' />
+                                        </InputGroup>
+
+                                    </div>
+                                    <div className='w-[49%]'>
+                                        <InputGroup size={'md'}>
+                                            <InputLeftAddon children='Body Temp' />
+                                            <Input value={workoutBodyTemp} onChange={(e) => {
+                                                setWorkoutBodyTemp(e.target.value);
+                                            }} type='number' placeholder='Ex: 37' />
+                                        </InputGroup>
+                                    </div>
                                 </div>
                                 <div className="mb-3">
-                                    <input
-                                        type="number"
-                                        className="form-control w-[95%] px-4 p-2 rounded-md text-base border border-gray"
-                                        id="workout-calories"
-                                        placeholder="Enter Calories"
-                                        value={workoutCalories}
-                                        onChange={(e) => setWorkoutCalories(e.target.value)}
-                                    />
+                                    <InputGroup size={'md'}>
+                                        <InputLeftAddon children='Calories Burned' />
+                                        <Input value={workoutCalories} onChange={(e) => setWorkoutCalories(e.target.value)} type='number' />
+                                    </InputGroup>
                                 </div>
                                 <button type='submit'
                                     className="btn btn-primary flex items-center rounded-md bg-[#589F3C] mt-4 hover:bg-[#589F3C90] hover:text-white btn-sm text-white fw-semibold py-1.5 px-3 h-84"

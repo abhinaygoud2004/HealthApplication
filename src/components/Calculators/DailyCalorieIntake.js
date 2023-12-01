@@ -16,7 +16,7 @@ const DailyCalorieIntake = () => {
         if (sex === 'male') {
             bmr = 88.362 + 13.397 * weight + 4.799 * height - 5.677 * age;
         } else {
-            bmr = 447.593 + 9.247 * weight + 3.098 * height - 4.330 * age;
+            bmr = 66.47 + 13.75 * weight + 5.003 * height - 6.755 * age;
         }
 
         let activityMultiplier;
@@ -34,7 +34,7 @@ const DailyCalorieIntake = () => {
                 activityMultiplier = 1.725;
                 break;
             default:
-                activityMultiplier = 1.2;
+                activityMultiplier = 1.375;
         }
 
         const totalCalories = Math.round(bmr * activityMultiplier);
@@ -142,9 +142,9 @@ const DailyCalorieIntake = () => {
                             Calculate Calories
                         </button>
                         {calorieResult !== null && (
-                            <div className="mt-4">
-                                <p className="text-lg font-semibold">Your estimated daily calorie limit:</p>
-                                <p className="text-xl font-bold">{calorieResult} calories</p>
+                            <div className="mt-4 text-center">
+                                <p className="text-lg font-semibold">Your estimated daily calorie Range:</p>
+                                <p className="text-xl font-bold text-[#599f3d]">{calorieResult - 150} - {calorieResult + 50} calories</p>
                             </div>
                         )}
                     </div>

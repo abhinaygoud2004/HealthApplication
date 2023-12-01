@@ -11,6 +11,7 @@ import Login from "./components/Login/Login";
 import DailyCalorieIntake from "./components/Calculators/DailyCalorieIntake";
 import NutritionTable from "./components/Nutrition/Nutrition";
 import Media from "./components/Media/Media";
+import Test from "./components/Test";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                 <Route path='/signup' element={<SignUp/>}/>
                 <Route path='/media' element={<Media/>}/>
                 <Route path='/nutrition' element={<NutritionTable/>}/>
+                <Route path='/test' element={<Test/>}/>
                 
               </Routes>
             </BrowserRouter>
