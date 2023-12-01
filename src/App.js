@@ -9,6 +9,8 @@ import { Helmet } from "react-helmet";
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
 import DailyCalorieIntake from "./components/Calculators/DailyCalorieIntake";
+import NutritionTable from "./components/Nutrition/Nutrition";
+import Media from "./components/Media/Media";
 
 function App() {
 
@@ -29,6 +31,9 @@ function App() {
                 <Route path="/daily-calorie-calculator" element={<DailyCalorieIntake />} />
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/signup' element={<SignUp/>}/>
+                <Route path='/media' element={<Media/>}/>
+                <Route path='/nutrition' element={<NutritionTable/>}/>
+                
               </Routes>
             </BrowserRouter>
           </ChakraProvider>
