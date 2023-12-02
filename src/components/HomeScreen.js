@@ -114,35 +114,15 @@ const HomeScreen = () => {
 
     return (
         <div>
-            <div className='bg-[#589F3C]'>
+            <div className=''>
                 <header className="bg-primary flex justify-between items-center text-white text-center py-3 px-7">
                     <div className='flex items-center'>
-                        <svg
-                            className="inline-block fa-utensils"
-                            aria-hidden="true"
-                            focusable="false"
-                            data-prefix="fas"
-                            data-icon="utensils"
-                            role="img"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 448 512"
-                            width={'29'}
-                            height={'32'}
-                        >
-                            <path
-                                fill="currentColor"
-                                d="M416 0C400 0 288 32 288 176V288c0 35.3 28.7 64 64 64h32V480c0 17.7 14.3 32 32 32s32-14.3 32-32V352 240 32c0-17.7-14.3-32-32-32zM64 16C64 7.8 57.9 1 49.7.1S34.2 4.6 32.4 12.5L2.1 148.8C.7 155.1 0 161.5 0 167.9c0 45.9 35.1 83.6 80 87.7V480c0 17.7 14.3 32 32 32s32-14.3 32-32V255.6c44.9-4.1 80-41.8 80-87.7c0-6.4-.7-12.8-2.1-19.1L191.6 12.5c-1.8-8-9.3-13.3-17.4-12.4S160 7.8 160 16V150.2c0 5.4-4.4 9.8-9.8 9.8c-5.1 0-9.3-3.9-9.8-9L127.9 14.6C127.2 6.3 120.3 0 112 0s-15.2 6.3-15.9 14.6L83.7 151c-.5 5.1-4.7 9-9.8 9c-5.4 0-9.8-4.4-9.8-9.8V16zm48.3 152l-.3 0-.3 0 .3-.7 .3 .7z"
-                            ></path>
-                        </svg>
-                        <h1 className='text-2xl font-semibold ml-3'>
-                            Calorie Tracker
-                        </h1>
                     </div>
                     <div className="flex space-x-5">
                         <button onClick={() => {
                             setShowModal(true)
                         }}
-                            className="bg-transparent border border-white hover:bg-white hover:text-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="bg-transparent border border-[#589F3C] hover:bg-[#589F3C] hover:text-white text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             data-bs-toggle="modal"
                             data-bs-target="#limit-modal"
                         >
@@ -153,7 +133,7 @@ const HomeScreen = () => {
                             setAllWorkouts([]);
                         }}
                             id="reset"
-                            className="bg-transparent border border-white hover:bg-white hover:text-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="bg-transparent border border-[#589F3C] hover:bg-[#589F3C] hover:text-white text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         >
                             Reset Day
                         </button>
@@ -202,7 +182,7 @@ const HomeScreen = () => {
                 <div className="col-md-4 w-[30%]">
                     <div className="card bg-[#f8f9fa] border border-black rounded-md">
                         <div className="p-4 px-6">
-                            <div id="calories-remaining" className="text-3xl font-semibold">{dailyCaloriesLimit - Number(caloriesConsumed) + Number(caloriesBurned)}</div>
+                            <div id="calories-remaining" className="text-3xl font-semibold">{dailyCaloriesLimit - Number(caloriesConsumed)}</div>
                             <p className="text-lg">Calories Remaining</p>
                         </div>
                     </div>

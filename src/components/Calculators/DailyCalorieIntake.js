@@ -41,7 +41,6 @@ const DailyCalorieIntake = () => {
         setCalorieResult(totalCalories);
     };
 
-
     return (
         loading ?
             <div className="flex items-center justify-center h-screen">

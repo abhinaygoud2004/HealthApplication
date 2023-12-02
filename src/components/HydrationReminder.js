@@ -107,7 +107,7 @@ const HydrationReminder = () => {
 
   const [userResponded, setUserResponed] = useState(false);
   return ((!userResponded) && !(Notification.permission === 'granted')) ? (
-    <div className='bg-gradient-to-r from-blue-300 to-green-200 items-center justify-center'>
+    <div className='bg-[#243c5a10] items-center justify-center'>
       <Container>
         <Alert status='success'>
           <AlertIcon />
@@ -164,7 +164,7 @@ const HydrationReminder = () => {
     </div>
   ) : (
     Notification.permission === "granted") ? (
-    <div className='bg-gradient-to-r from-blue-300 to-green-200 items-center h-full justify-center'>
+    <div className='bg-[#243c5a10] items-center h-full justify-center'>
 
       <div className="flex flex-col h-screen items-center pb-3 text-slate-500">
         <h1 className="text-4xl font-bold mb-5">{randomMotivationFact()}</h1>

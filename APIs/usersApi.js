@@ -52,7 +52,7 @@ userApp.post("/register",
             //replace plain password with hashed password
             newUser.password = hashedPassword;
             //insert user
-            console.log(newUser)
+            console.log(newUser, 'new user')
             await userCollectionObj.insertOne(newUser)
             //send response
             response.status(201).send({ message: "User created" })

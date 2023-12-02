@@ -35,7 +35,7 @@ mclient.connect('mongodb://127.0.0.1:27017')
   const dbobj=dbRef.db('healthtracking')
   //connect to collections of this database
   const userCollectionObj=dbobj.collection('users')
-  //share collections to APIs
+  //share collections to APIsi
   app.set('userCollectionObj',userCollectionObj)
   console.log("DB connections is successfull")
 })
