@@ -26,7 +26,7 @@ body {
   }
 
   .welcome-box {
-    background-color: #2096f3;
+    background-color: #589f3c;
     color: #fff;
     padding: 2rem;
     border-radius: 12px;
@@ -62,7 +62,7 @@ body {
   }
 
   .button {
-    background-color: #2096f3;
+    background-color: #589f3c;
     color: #fff;
     padding: 1rem 1.5rem; 
     border: none;
@@ -72,5 +72,5 @@ body {
   }
 
   .button:hover {
-    background-color: #007acc;
+    background-color: #589f3c60;
   }

@@ -50,9 +50,9 @@ const SignUp = () => {
               <input
                 type="text"
                 name="username"
-                placeholder="hi"
+                placeholder="username"
                 id="username"
-                className="input-field mt-3"
+                className="input-field mt-1"
                 {...register("username", { required: true })}
               />
             </div>
@@ -63,9 +63,9 @@ const SignUp = () => {
               <input
                 type="password"
                 name="password"
-                placeholder="hi"
+                placeholder="password"
                 id="password"
-                className="input-field mt-3"
+                className="input-field mt-1"
                 {...register("password", { required: true })}
               />
             </div>
@@ -76,15 +76,15 @@ const SignUp = () => {
               </label>
               <input
                 type="email"
-                placeholder="hi"
+                placeholder="email"
                 name="email"
                 id="email"
-                className="input-field mt-3"
+                className="input-field mt-1"
                 {...register("email", { required: true })}
               />
             </div>
-
-            <div className="input-group">
+            <div className="flex flex-row gap-4">
+            <div className="input-group w-1/2">
               <label htmlFor="sex" className="input-label">
                 Sex
               </label>
@@ -110,10 +110,13 @@ const SignUp = () => {
                 name="age"
                 className="input-field"
                 {...register("age", { required: true })}
-                placeholder="hi"
+                placeholder="age"
               />
             </div>
-            <div className="input-group">
+            </div>
+            
+            <div className="flex flex-row gap-4">
+            <div className="input-group w-1/2">
               <label htmlFor="height" className="input-label">
                 Height
               </label>
@@ -123,7 +126,7 @@ const SignUp = () => {
                 name="height"
                 className="input-field"
                 {...register("height", { required: true })}
-                placeholder="hi"
+                placeholder="height"
               />
             </div>
 
@@ -137,9 +140,11 @@ const SignUp = () => {
                 name="weight"
                 className="input-field"
                 {...register("weight", { required: true })}
-                placeholder="hi"
+                placeholder="weight"
               />
             </div>
+            </div>
+            
 
             <button type="submit" className="button">
               Sign Up
@@ -148,9 +153,13 @@ const SignUp = () => {
         </div>
 
         <div className="welcome-box">
-          <h2 className="text-2xl font-bold mb-4">Welcome to the Health App</h2>
-          <img src="" alt="" />
-        </div>
+  <h2 className="text-2xl font-bold mb-4 text-[#f8f9fa]">Welcome to the Health App</h2>
+  <img
+    src="https://img.freepik.com/free-vector/healthy-lifestyle-diet-fitness-vector-sign-shape-heart-with-multiple-icons-depicting-various-sports-vegetables-cereals-seafood-meat-fruit-sleep-weight-beverages_1284-44073.jpg?w=1380&t=st=1701497993~exp=1701498593~hmac=1e9bc1c9790b2534ac1f29837fe443a6cdc2f060823b6206ddef79566139eb2a"
+    alt=""
+    className="rounded mt-20"
+  />
+</div>
       </div>
     </div>
   );
