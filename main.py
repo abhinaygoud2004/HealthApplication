@@ -9,12 +9,19 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from sklearn.pipeline import make_pipeline
+from dotenv import load_dotenv
+import os
 
+# Load environment variables from .env file
+load_dotenv()
+
+calorie_path=os.getenv("CALORIE_PATH")
+exercise_path=os.getenv("EXERCISE_PATH")
 app = Flask(__name__)
 CORS(app)
 
-cal = pd.read_csv(r'C:\Users\agsna\Desktop\CalorieTracker\calorie-tracker\calories.csv')
-exc = pd.read_csv(r'C:\Users\agsna\Desktop\CalorieTracker\calorie-tracker\exercise.csv')
+cal = pd.read_csv(calorie_path)
+exc = pd.read_csv(exercise_path)
 cal_data = pd.concat([exc, cal['Calories']], axis=1)
 
 cal_data.replace({"Gender": {'male': 0, 'female': 1}}, inplace=True)
